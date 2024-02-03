@@ -7,9 +7,14 @@ const router = createRouter({
         //Aquí se descarga todo
         { path: "/", component: HomeViewVue },
         //Esta es la manera para cargar solo la página que necesitamos en cada momento
-        { path: "/about", component: import("../views/AboutView.vue") },
-        { path: "/chats", component: import("../views/ChatsView.vue") },
-        { path: "/chats/:chatId", component: import("../views/ChatsView.vue") }
+        { path: "/about", component: () => import("../views/AboutView.vue") },
+        {
+            path: "/chats",
+            component: () => import("../views/ChatsView.vue"),
+            children: [
+                { path: ":chatId", component: () => import("../views/ChatView.vue") }
+            ]
+        },
     ]
 });
 
