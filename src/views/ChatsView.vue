@@ -23,6 +23,22 @@
                 { id: 3, name: "Miguel" },
             ]
             }
+        },/* 
+        watch: {
+            "$route.params": (val) => {
+                console.log("update params", val)
+            }
+        }, */
+        created() {
+            this.$watch(
+                () => this.$route.params,
+                (val) => {
+                    //Aquí se puede actualizar desde el backend
+                    console.log("update params", val)
+                },
+                { immediate: true }
+
+            )
         }
     }
 </script>
