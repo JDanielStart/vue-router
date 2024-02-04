@@ -1,24 +1,14 @@
-<script>
-  export default {
-    data() {
-      return {
-        username: ""
-      }
-    },
-    methods: {
-      iniciar() {
-        //this.$router.go(-1) va hacia atrás del historial
-        //this.$router.go(2) va hacia delante del historial
-        this.$router.push({
-          path: "/chats",
-          query: {
-            variable1: 1
-          },
-          //Con esto no se guarda como punto en la historia
-          replace: true
-        });
-      }
-    }
+<script setup>
+
+  import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
+
+  const username = ref()
+
+  const router = useRouter();
+
+  function iniciar() {
+    router.push({ name: "about" })
   }
 </script>
 
