@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeViewVue from "@/views/HomeView.vue";
 import NotFound from "@/views/404View.vue";
 
+const stage = import.meta.env.VITE_STAGE;
+
 const router = createRouter({
     //createWebHashHistory() hace lo mismo pero nos sirve
     //para evitar errores con backend que no esten preparados
@@ -55,6 +57,13 @@ const router = createRouter({
         },
     ]
 });
+
+if (stage === 'test') {
+    router.addRoute({
+      path: '/profile',
+      component: () => import('../views/ProfileView.vue')
+    })
+  }
 
 router.beforeEach((to, from) => {
     console.log(to, from);
