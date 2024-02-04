@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeViewVue from "@/views/HomeView.vue";
 
 const router = createRouter({
+    //createWebHashHistory() hace lo mismo pero nos sirve
+    //para evitar errores con backend que no esten preparados
+    //para rutas como hace vue router de paginas que estan en el
+    //front end usando una # delante
     history: createWebHistory(),
     routes: [
         /* { path: "/home", redirect: { name: "home" } }, */
