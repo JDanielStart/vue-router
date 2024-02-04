@@ -4,9 +4,8 @@ import HomeViewVue from "@/views/HomeView.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        //Aquí se descarga todo
-        { path: "/", name: "home", component: HomeViewVue },
-        //Esta es la manera para cargar solo la página que necesitamos en cada momento
+        /* { path: "/home", redirect: { name: "home" } }, */
+        { path: "/", name: "home", component: HomeViewVue, alias: ["/home"] },
         { path: "/about", name: "about", component: () => import("../views/AboutView.vue") },
         {
             path: "/session",
