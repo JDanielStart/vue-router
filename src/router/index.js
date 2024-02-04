@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeViewVue from "@/views/HomeView.vue";
+import NotFound from "@/views/404View.vue";
 
 const router = createRouter({
     //createWebHashHistory() hace lo mismo pero nos sirve
@@ -9,6 +10,8 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         /* { path: "/home", redirect: { name: "home" } }, */
+        { path: "/404", component: NotFound},
+        { path: "/:catchAll(.*)", redirect: "/404" },
         {
             path: "/",
             name: "home",
@@ -40,7 +43,7 @@ const router = createRouter({
             },
             children: [
                 {
-                    path: ":chatId",
+                    path: ":chatId(\\d+)",
                     component: () => import("../views/ChatView.vue"),
                     props: (route) => {
                         return {
